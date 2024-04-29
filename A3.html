@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 40%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" ng-controller="formController">
+        <h2 style="text-align: center;">AngularJS Form Validation</h2>
+        <form name="myForm" novalidate>
+            <div>
+                <label for="name">Name:</label>
+                <span class="error-message" ng-show="myForm.name.$error.required">Name is required</span>
+                <input type="text" id="name" name="name" ng-model="user.name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <span class="error-message" ng-show="myForm.email.$error.required">Email is required</span>
+                <span class="error-message" ng-show="myForm.email.$error.email">Invalid email format</span>
+                <input type="email" id="email" name="email" ng-model="user.email" required>
+            </div>
+            <!-- Add more fields here as required -->
+            <!-- Example: -->
+            <!-- <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" ng-model="user.phone" required>
+                <span class="error-message" ng-show="myForm.phone.$error.required">Phone is required</span>
+            </div> -->
+            <!-- Add more fields as needed -->
+            <div>
+                <label for="phone">Phone:</label>
+                <span class="error-message" ng-show="myForm.phone.$error.required">Phone is required</span>
+                <input type="tel" id="phone" name="phone" ng-model="user.phone" required>
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                <span class="error-message" ng-show="myForm.address.$error.required">Address is required</span>
+                <input type="text" id="address" name="address" ng-model="user.address" required>
+            </div>
+            <div>
+                <label for="city">City:</label>
+                <span class="error-message" ng-show="myForm.city.$error.required">City is required</span>
+                <input type="text" id="city" name="city" ng-model="user.city" required>
+            </div>
+            <div>
+                <label for="state">State:</label>
+                <span class="error-message" ng-show="myForm.state.$error.required">State is required</span>
+                <input type="text" id="state" name="state" ng-model="user.state" required>
+            </div>
+            <div>
+                <label for="zip">Zip Code:</label>
+                <span class="error-message" ng-show="myForm.zip.$error.required">Zip Code is required</span>
+                <input type="text" id="zip" name="zip" ng-model="user.zip" required>
+            </div>
+            <div>
+                <label for="country">Country:</label>
+                <span class="error-message" ng-show="myForm.country.$error.required">Country is required</span>
+                <input type="text" id="country" name="country" ng-model="user.country" required>
+            </div>
+            <div>
+                <label for="dob">Date of Birth:</label>
+                <span class="error-message" ng-show="myForm.dob.$error.required">Date of Birth is required</span>
+                <input type="date" id="dob" name="dob" ng-model="user.dob" required>
+            </div>
+            <div>
+                <label for="gender">Gender:</label>
+                <span class="error-message" ng-show="myForm.gender.$error.required">Gender is required</span>
+                <select id="gender" name="gender" ng-model="user.gender" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <button type="submit" ng-disabled="myForm.$invalid">Submit</button>
+        </form>
+    </div>
+
+    <!-- Load AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('formController', function($scope) {
+            $scope.user = {};
+        });
+    </script>
+</body>
+</html>
